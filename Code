@@ -1,0 +1,20 @@
+
+code
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation Sample Template for EC2 Instance
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0
+aws cloudformation create-stack \
+  --stack-name MyEC2Stack \
+  --template-body file://ec2-instance-template.yaml \
+  --capabilities CAPABILITY_IAM
+aws cloudformation describe-stacks --stack-name MyEC2Stack
+aws cloudformation update-stack \
+  --stack-name MyEC2Stack \
+  --template-body file://ec2-instance-template.yaml
+aws cloudformation delete-stack --stack-name MyEC2Stack
